@@ -9,6 +9,7 @@ export class ReservationsController {
 
     addReservation(tripId) {
         window.event.preventDefault()
+        // let reservations = ProxyState.reservations.sort((a,b)=> a.date - b.date)
         console.log('Adding to trip', tripId);
         let form = window.event.target
         let reservationData = {
@@ -24,7 +25,7 @@ export class ReservationsController {
     }
 
     async deleteReservation(id) {
-        if (await Pop.confirm('Delete it dummy?')) {
+        if (await Pop.confirm('Delete it dummy')) {
             reservationsService.deleteReservation(id)
         }
     }

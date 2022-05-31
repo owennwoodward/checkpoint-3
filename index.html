@@ -25,6 +25,7 @@
     </nav>
   </header>
   <main>
+
     <div class="container-fluid pt-3">
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link active bg-warning p-5" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#trip-tab"
@@ -32,15 +33,19 @@
         <button class="nav-link bg-success ms-3" id="nav-profile-tab ms-5" data-bs-toggle="tab"
           data-bs-target="#booking-tab" type="button" role="tab">New Trip Creation</button>
       </div>
+
       <!-- <h3>Type</h3>
               <h3>Name</h3>
               <h3>Confirmation Number</h3>
               <h3>Notes</h3>
               <h3>Date</h3>
               <h3>Cost</h3> -->
+
       <div class="tab-content">
         <div class="tab-pane fade show active" id="trip-tab" role="tabpanel">
           <div id="trips" class="row m-2">
+
+
             <!-- <p>✈</p>
           <p>Flight to California</p>
           <p>5555GHJN</p>
@@ -49,31 +54,35 @@
           <p>$500</p> -->
           </div>
         </div>
-        <!-- Form tab -->
+
+        <!-- start form here -->
+
+
+
         <div class="tab-pane fade show" id="booking-tab" role="tabpanel">
           <div id="booking-form" class="row m-2">
             <div class="col-md-6 bg-white rounded shadow p-4">
               <h4>Book Your Trip Today</h4>
               <form class="row" id="form" onsubmit="app.tripsController.bookTrip()">
                 <div class="mb-2 col-12">
-                  <label for="" class="form-label">Name of Trip</label>
-                  <input type="text" required name="name" id="name" class="form-control" aria-describedby="helpId"
-                    placeholder="">
+                  <label for="" class="form-label">Name of Destination</label>
+                  <input type="text" minlength="3" maxlength="50" required name="name" id="name" class="form-control"
+                    aria-describedby="helpId" placeholder="">
                 </div>
                 <div class="mb-2 col-12">
                   <label for="" class="form-label">Days Staying</label>
-                  <input type="number" required min="3" name="days" id="days" class="form-control"
+                  <input type="number" required min="3" max="30" name="days" id="days" class="form-control"
                     aria-describedby="helpId" placeholder="">
                 </div>
                 <div class="mb-2 col-12">
                   <label for="" class="form-label">Date</label>
-                  <input type="date" required min="2022-05-20" value="2022-05-20" name="date" id="date"
-                    class="form-control" aria-describedby="helpId" placeholder="">
+                  <input type="date" required value="2022-05-20" name="date" id="date" class="form-control"
+                    aria-describedby="helpId" placeholder="">
                 </div>
                 <div class="mb-2 col-12">
                   <label for="" class="form-label">Custom Notes</label>
-                  <textarea name="notes" required min="3" id="notes" class="form-control" aria-describedby="helpId"
-                    placeholder=""></textarea>
+                  <textarea name="notes" required minlength="3" maxlength="1000" id="notes" class="form-control"
+                    aria-describedby="helpId" placeholder=""></textarea>
                 </div>
                 <button class="btn btn-success">Book Trip</button>
               </form>
@@ -83,6 +92,7 @@
       </div>
     </div>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>

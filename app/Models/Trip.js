@@ -3,24 +3,25 @@ import { generateId } from "../Utils/generateId.js"
 
 
 export class Trip {
-    constructor(tripData) {
-        this.id = tripData.id || generateId()
-        this.name = tripData.name,
-            this.date = new Date(tripData.date),
-            this.days = tripData.days,
-            this.notes = tripData.notes
-    }
+  constructor(tripData) {
+    this.id = tripData.id || generateId()
+    this.name = tripData.name,
+      this.date = new Date(tripData.date),
+      this.days = tripData.days,
+      this.notes = tripData.notes
+  }
 
-    get Template() {
-        return `
+  get Template() {
+    return `
     <div class="col-6 my-3">
       <div class="card p-3 shadow" bg-dark>
         <h4 class="d-flex justify-content-between">${this.name} <span>Trip days: ${this.days}</span><i
-            class="mdi mdi-close selectable" onclick="app.tripsController.deleteTrip('${this.id}')"></i></h4>
+            class="mdi mdi-fire selectable" onclick="app.tripsController.deleteTrip('${this.id}')"></i></h4>
             <h5 class="text-muted"> ${this.date.toDateString()}</h5>
             ${this.Reservations}
             <form class="reservation-form" onsubmit="app.reservationsController.addReservation('${this.id}')">
-            <select name="type" id="type">
+            <select name="type" required id="type">
+              <option value="">Type</option>
               <option value="Gas">⛽Gas</option>
               <option value="Food">🍔Food</option>
               <option value="Hotel">🏨 Hotel</option>
@@ -37,19 +38,19 @@ export class Trip {
       </div>
     </div>
     `
-    }
+  }
 
-    get Reservations() {
-        let reservations = ProxyState.reservations.filter(re => re.tripId == this.id)
-        let template = ''
-        reservations.forEach(re => template += re.Template)
-        return template
-    }
+  get Reservations() {
+    let reservations = ProxyState.reservations.filter(re => re.tripId == this.id)
+    let template = ''
+    reservations.forEach(re => template += re.Template)
+    return template
+  }
 
-    get Total() {
-        let reservations = ProxyState.reservations.filter(re => re.tripId == this.id)
-        let subTotal = 0
-        reservations.forEach(re => subTotal += parseInt(re.price))
-        return subTotal
-    }
+  get Total() {
+    let reservations = ProxyState.reservations.filter(re => re.tripId == this.id)
+    let subTotal = 0
+    reservations.forEach(re => subTotal += parseInt(re.price))
+    return subTotal
+  }
 }
